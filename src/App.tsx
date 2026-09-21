@@ -149,6 +149,7 @@ export default function App() {
             carta={config.carta}
             tuNombre={config.tuNombre}
             fechaInicio={config.fechaInicio}
+            etiquetaDias={config.etiquetaDias}
             paleta={config.paleta}
             onVolver={() => ir('jardin', 'bloom')}
           />

@@ -48,7 +48,7 @@ export default function GardenCanvas({
   const terminadoRef = useRef(false)
   const [cantidad, setCantidad] = useState(0)
   const [mensaje, setMensaje] = useState<{ num: number; texto: string } | null>(null)
-  const [terminado, setTerminado] = useState(false)
+  const [ultimaLista, setUltimaLista] = useState(false)
   const [tocada, setTocada] = useState(false)
 
   if (!partes.current) partes.current = new Particulas(paleta)
@@ -258,7 +258,10 @@ export default function GardenCanvas({
           if (num >= total && !terminadoRef.current) {
             terminadoRef.current = true
             P.lluvia(ancho, 46)
-            window.setTimeout(() => setTerminado(true), 950)
+            // Ojo: el aviso de "jardín completo" NO sale aquí.
+            // Sale cuando ella cierre este último mensaje, para que le dé
+            // tiempo a leerlo con calma.
+            setUltimaLista(true)
           }
         }
       }
@@ -328,16 +331,19 @@ export default function GardenCanvas({
         </div>
       </div>
 
-      {!tocada && !terminado && (
+      {!tocada && !ultimaLista && (
         <p className="jardin__pista">Toca la tierra para plantar</p>
       )}
 
-      {mensaje && !terminado && (
+      {mensaje && (
         <div className="tarjeta" key={mensaje.num} role="status">
           <div className="tarjeta__num">
             Flor {mensaje.num} de {total}
           </div>
           <p className="tarjeta__texto">{mensaje.texto}</p>
+          {mensaje.num === total && (
+            <p className="tarjeta__nota">Cierra este mensaje para ver tu ramo</p>
+          )}
           <button
             className="tarjeta__cerrar"
             onClick={() => setMensaje(null)}
@@ -348,7 +354,7 @@ export default function GardenCanvas({
         </div>
       )}
 
-      {terminado && (
+      {ultimaLista && !mensaje && (
         <div className="completo">
           <div className="completo__titulo">
             {total}/{total}

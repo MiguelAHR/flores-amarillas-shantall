@@ -85,14 +85,14 @@ function dibujarRamo(
   ctx.shadowColor = 'rgba(255,196,46,0.65)'
   ctx.shadowBlur = 45
   textoAjustado(ctx, `Para ${nombre}`, "__PX__px 'Great Vibes', cursive", 140, W * 0.84)
-  ctx.fillText(`Para ${nombre}`, W * 0.5, H * 0.145)
+  ctx.fillText(`Para ${nombre}`, W * 0.5, H * 0.115)
   ctx.restore()
 
   ctx.save()
   ctx.textAlign = 'center'
   ctx.fillStyle = 'rgba(255,246,220,0.55)'
   ctx.font = "500 26px 'Inter', sans-serif"
-  ctx.fillText(`${total} FLORES AMARILLAS · 21 DE SEPTIEMBRE`, W * 0.5, H * 0.195)
+  ctx.fillText(`${total} FLORES AMARILLAS · 21 DE SEPTIEMBRE`, W * 0.5, H * 0.163)
   ctx.restore()
 
   /* ── flores en abanico ── */
@@ -104,7 +104,7 @@ function dibujarRamo(
     const u = total === 1 ? 0.5 : i / (total - 1)
     const ang = (-1 + 2 * u) * (Math.PI * 0.345)
     const dist = 1 - Math.abs(u - 0.5) * 1.18
-    plan.push({ ang, largo: H * (0.29 + 0.21 * dist), dist, i })
+    plan.push({ ang, largo: H * (0.25 + 0.18 * dist), dist, i })
   }
 
   // las de afuera primero (quedan detrás)

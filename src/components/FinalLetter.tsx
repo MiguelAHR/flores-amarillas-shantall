@@ -7,11 +7,20 @@ type Props = {
   carta: string
   tuNombre: string
   fechaInicio: string
+  etiquetaDias: string
   paleta: Paleta
   onVolver: () => void
 }
 
-/** Lluvia de pétalos temporal (al tocar "Te amo"). */
+/** Cuánto tiempo sigue soltando pétalos nuevos (ms). */
+const EMISION_MS = 4500
+/** Tope de seguridad por si algo se queda colgado (ms). */
+const MAXIMO_MS = 16000
+
+/**
+ * Lluvia de pétalos. Deja de soltar pétalos a los pocos segundos y espera
+ * a que los últimos se desvanezcan solos: así no corta de golpe.
+ */
 function Lluvia({ paleta, onFin }: { paleta: Paleta; onFin: () => void }) {
   const ref = useRef<HTMLCanvasElement | null>(null)
 
@@ -38,12 +47,16 @@ function Lluvia({ paleta, onFin }: { paleta: Paleta; onFin: () => void }) {
     const paso = (ahora: number) => {
       const dt = Math.min(0.05, Math.max(0, (ahora - ultimo) / 1000))
       ultimo = ahora
+      const vivido = ahora - inicio
+
+      if (vivido < EMISION_MS) P.lluvia(w, 3)
+
       P.update(dt, ahora / 1000, w, h)
-      P.lluvia(w, 2)
       ctx.clearRect(0, 0, w, h)
       P.draw(ctx)
 
-      if (ahora - inicio < 6500) {
+      const quedan = P.petalos.length > 0
+      if (quedan && vivido < MAXIMO_MS) {
         raf = requestAnimationFrame(paso)
       } else {
         onFin()
@@ -65,6 +78,7 @@ export default function FinalLetter({
   carta,
   tuNombre,
   fechaInicio,
+  etiquetaDias,
   paleta,
   onVolver,
 }: Props) {
@@ -97,29 +111,34 @@ export default function FinalLetter({
 
   return (
     <div className="carta">
-      <div className="carta__hoja">
-        {parrafos.map((p, i) => (
+      <div className="carta__scroll">
+        <div className="carta__hoja">
+          {parrafos.map((p, i) => (
+            <p
+              className="carta__para"
+              key={i}
+              style={{ animationDelay: `${0.12 + i * 0.22}s` }}
+            >
+              {p}
+            </p>
+          ))}
+
           <p
-            className="carta__para"
-            key={i}
-            style={{ animationDelay: `${0.12 + i * 0.22}s` }}
+            className="carta__firma"
+            style={{ animationDelay: `${0.4 + parrafos.length * 0.22}s` }}
           >
-            {p}
+            Con todo mi amor,
+            <br />
+            {tuNombre}
           </p>
-        ))}
 
-        <p className="carta__firma" style={{ animationDelay: `${0.4 + parrafos.length * 0.22}s` }}>
-          Con todo mi amor,
-          <br />
-          {tuNombre}
-        </p>
-
-        {dias !== null && (
-          <div className="carta__dias">
-            <b>{dias.toLocaleString('es')}</b>
-            <span>días junto a {nombre}</span>
-          </div>
-        )}
+          {dias !== null && (
+            <div className="carta__dias">
+              <b>{dias.toLocaleString('es')}</b>
+              <span>{etiquetaDias}</span>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="carta__acciones">

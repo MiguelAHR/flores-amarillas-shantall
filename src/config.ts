@@ -19,6 +19,9 @@ export const config = {
   /** El día en que empezaron (25/02/2026). Alimenta el contador de días. */
   fechaInicio: '2026-02-25',
 
+  /** El texto que acompaña al contador de días, al final de la carta */
+  etiquetaDias: 'días juntos, mi princesa',
+
   /** Cuántas flores hay que plantar para desbloquear el ramo */
   totalFlores: 21,
 
@@ -79,19 +82,20 @@ export const config = {
   /* ────────────────────────────────────────────────────────────
      5. ETAPA 5 · LA CARTA FINAL
      Separa los párrafos con una línea en blanco.
+     La firma y el contador de días se añaden solos al final.
      ──────────────────────────────────────────────────────────── */
 
-  carta: `Shantall:
+  carta: `Mi amada Shantall
 
-No sabía muy bien cómo decirte todo esto, así que te hice un jardín.
+No sabía muy bien cómo hacer especial este día, así que te hice un jardín.
 
-Cada flor de ahí la plantaste tú, y cada una tiene algo que llevo tiempo queriendo decirte. Léelas despacio, porque ninguna es un relleno.
+Cada flor de ahí la plantaste tú, y cada una tiene algo que llevo siempre en mis pensamientos. Ninguna es un relleno, hasta me faltaron flores.
 
-Me gusta la vida contigo. Me gustan los días comunes, los planes que salen mal, las conversaciones a las 3 de la mañana y la forma en que te ríes cuando algo te da mucha gracia.
+Me gusta la vida contigo. Me gustan los días comunes, los planes que hacemos, así salgan mal en alguna cosita, las conversaciones de madrugada y la forma en que te ríes cuando digo algo, hacemos algo o alguna cosa que te da mucha gracia, me encanta.
 
-Hoy es 21 de septiembre y la tradición dice flores amarillas. Yo te doy 21, una por cada cosa que no me alcanza el tiempo para explicarte.
+Hoy es 21 de septiembre y la tradición dice flores amarillas. Yo te doy 21, una por cada cosa que siempre está en mi pensamiento.
 
-Gracias por estar. Gracias por quedarte.`,
+Gracias por estar conmigo. Gracias por quedarte. Te amo con todo mi corazón.`,
 
   /* ────────────────────────────────────────────────────────────
      6. MÚSICA

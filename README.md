@@ -48,7 +48,8 @@ Abre `src/config.ts` y cambia:
 |---|---|
 | `nombre` | El nombre de ella. Aparece en el sobre, el jardín y el ramo. |
 | `tuNombre` | Tu nombre, para la firma de la carta. |
-| `fechaInicio` | `'2025-03-14'` → alimenta el contador de días juntos. |
+| `fechaInicio` | `'2026-02-25'` → alimenta el contador de días juntos. |
+| `etiquetaDias` | El texto que acompaña al contador, al final de la carta. |
 | `totalFlores` | Cuántas flores hay que plantar (por defecto **21**). |
 | `mensajeInicial` | Las frases de la intro, que se escriben letra por letra. |
 | `escenas` | Los planos del "edit" (2 líneas por plano). |

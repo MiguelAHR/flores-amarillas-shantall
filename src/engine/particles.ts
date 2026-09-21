@@ -16,8 +16,12 @@ type Petalo = {
   vr: number
   tam: number
   alfa: number
+  /** valor de alfa ya calculado (se desvanece al caer, si toca) */
+  alfaActual: number
   fase: number
   tono: number
+  /** true en la lluvia del final: se vuelven transparentes al bajar */
+  desvanecer: boolean
 }
 
 type Chispa = {
@@ -60,8 +64,10 @@ export class Particulas {
         vr: (Math.random() - 0.5) * 2.4,
         tam: 3 + Math.random() * 4,
         alfa: 0.55 + Math.random() * 0.45,
+        alfaActual: 0.8,
         fase: Math.random() * TAU,
         tono: Math.random(),
+        desvanecer: false,
       })
     }
   }
@@ -78,8 +84,10 @@ export class Particulas {
         vr: (Math.random() - 0.5) * 2.2,
         tam: 3 + Math.random() * 5,
         alfa: 0.5 + Math.random() * 0.5,
+        alfaActual: 0.8,
         fase: Math.random() * TAU,
         tono: Math.random(),
+        desvanecer: true,
       })
     }
   }
@@ -118,7 +126,19 @@ export class Particulas {
       p.y += p.vy * dt
       p.rot += p.vr * dt
 
-      if (p.y > alto + 40 || p.x < -60 || p.x > ancho + 60) {
+      /* Los pétalos de la lluvia final se van apagando a medida que bajan:
+         a partir de la mitad de la pantalla pierden opacidad poco a poco
+         y se desvanecen del todo antes de tocar el borde. */
+      if (p.desvanecer) {
+        const inicio = alto * 0.5
+        const fin = alto * 0.97
+        const k = p.y <= inicio ? 1 : Math.max(0, 1 - (p.y - inicio) / (fin - inicio))
+        p.alfaActual = p.alfa * k
+      } else {
+        p.alfaActual = p.alfa
+      }
+
+      if (p.y > alto + 40 || p.x < -60 || p.x > ancho + 60 || p.alfaActual < 0.02) {
         this.petalos.splice(i, 1)
       }
     }
@@ -163,7 +183,7 @@ export class Particulas {
       ctx.save()
       ctx.translate(p.x, p.y)
       ctx.rotate(p.rot)
-      ctx.globalAlpha = p.alfa
+      ctx.globalAlpha = p.alfaActual
       const color = p.tono > 0.66 ? oroClaro : p.tono > 0.33 ? oro : ambar
       ctx.fillStyle = color
       ctx.beginPath()

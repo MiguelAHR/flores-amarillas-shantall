@@ -1103,6 +1103,17 @@ button {
   color: var(--crema);
 }
 
+/* aviso dentro de la tarjeta de la flor 21 */
+.tarjeta__nota {
+  margin: 14px 0 0;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oro);
+  animation: latirSuave 2.4s ease-in-out infinite;
+}
+
 .tarjeta__cerrar {
   position: absolute;
   top: 10px;
@@ -1134,7 +1145,7 @@ button {
   gap: 22px;
   text-align: center;
   padding: 24px;
-  background: radial-gradient(circle at 50% 55%, rgba(10, 9, 8, 0.72), rgba(10, 9, 8, 0.94));
+  background: radial-gradient(circle at 50% 55%, rgba(10, 9, 8, 0.55), rgba(10, 9, 8, 0.86));
   animation: aparecer 1s var(--eo) both;
 }
 
@@ -1210,10 +1221,19 @@ button {
 .carta {
   position: absolute;
   inset: 0;
+  animation: aparecer 0.9s var(--eo) both;
+}
+
+/* La carta se desplaza SOLO aquí dentro. Los botones viven fuera de este
+   contenedor, así que nunca se montan encima del texto. */
+.carta__scroll {
+  position: absolute;
+  inset: 0;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding: calc(64px + var(--safe-t)) clamp(14px, 5vw, 40px) calc(120px + var(--safe-b));
-  animation: entrarEtapa 1s var(--eo) both;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  padding: calc(64px + var(--safe-t)) clamp(14px, 5vw, 40px) calc(168px + var(--safe-b));
 }
 
 .carta__hoja {
@@ -1296,7 +1316,7 @@ button {
 }
 
 .carta__acciones {
-  position: fixed;
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
@@ -1305,7 +1325,12 @@ button {
   justify-content: center;
   gap: 10px;
   padding: 18px 16px calc(18px + var(--safe-b));
-  background: linear-gradient(to top, rgba(10, 9, 8, 0.96) 40%, transparent);
+  background: linear-gradient(
+    to top,
+    rgba(10, 9, 8, 0.97) 45%,
+    rgba(10, 9, 8, 0.72) 72%,
+    transparent
+  );
   pointer-events: none;
 }
 
