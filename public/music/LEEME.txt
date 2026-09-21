@@ -1,0 +1,13 @@
+PON AQUÍ LA MÚSICA
+==================
+
+1. Copia tu canción en esta carpeta.
+2. Renómbrala a:  cancion.mp3
+   (o cambia la ruta en src/config.ts -> musica)
+
+Ejemplo final:
+  public/music/cancion.mp3
+
+Formatos que funcionan en todos los navegadores: .mp3 y .m4a
+Si no pones nada, la página funciona igual: el botón de música
+simplemente se desactiva solo.
