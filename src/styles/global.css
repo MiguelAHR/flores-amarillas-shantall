@@ -915,14 +915,19 @@ button {
   background: rgba(255, 196, 46, 0.55);
 }
 
+/* Fila del botón "Ir al jardín": va en el flujo normal (no flotando encima
+   de los controles) y reserva su altura siempre. */
 .reel__pie {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: calc(clamp(74px, 14vh, 108px) + var(--safe-b));
   display: flex;
+  align-items: center;
   justify-content: center;
+  min-height: 46px;
   pointer-events: none;
+}
+
+/* el contenedor no captura clics, pero el botón sí */
+.reel__pie > * {
+  pointer-events: auto;
 }
 
 .reel__barra {

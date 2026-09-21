@@ -10,14 +10,14 @@ export const config = {
      1. DATOS BÁSICOS
      ──────────────────────────────────────────────────────────── */
 
-  /** Su nombre (aparece en el sobre, en el ramo y en la carta) */
+  /** Su nombre (aparece en el sobre, en el jardín, en el ramo y en la carta) */
   nombre: 'Shantall',
 
   /** Tu nombre, para la firma de la carta */
-  tuNombre: 'Tu nombre',
+  tuNombre: 'Miguel Angel',
 
-  /** El día en que empezaron, formato AAAA-MM-DD. Sirve para el contador de días. */
-  fechaInicio: '2024-01-01',
+  /** El día en que empezaron (25/02/2026). Alimenta el contador de días. */
+  fechaInicio: '2026-02-25',
 
   /** Cuántas flores hay que plantar para desbloquear el ramo */
   totalFlores: 21,
@@ -49,33 +49,31 @@ export const config = {
   ],
 
   /* ────────────────────────────────────────────────────────────
-     4. LOS 21 MENSAJES · uno por flor
-     Reemplaza estos ejemplos por los tuyos (uno por línea).
-     Si pones menos de 21, se repiten en bucle.
+     4. LOS 21 MENSAJES · uno por flor (los tuyos, Miguel Angel)
      ──────────────────────────────────────────────────────────── */
 
   mensajes: [
-    'Eres lo primero que pienso cuando algo me sale bien.',
-    'Contigo hasta el silencio se siente cómodo.',
-    'Tienes una risa que me arregla el día entero.',
-    'Me gusta cómo cuentas las cosas que te emocionan.',
-    'Si pudiera elegir un lugar seguro, elegiría tu lado.',
-    'Te miro y se me olvida de qué estaba hablando.',
-    'Gracias por quedarte los días en que no soy fácil.',
-    'Eres mi plan favorito para cualquier día libre.',
-    'Me enseñas cosas sin darte cuenta.',
-    'Tu nombre me suena a casa.',
-    'Cada 21 me acuerdo de que te elegí a ti.',
-    'Me haces querer ser mejor, sin pedírmelo.',
-    'Los días contigo no alcanzan nunca.',
-    'Eres la parte buena de todas mis historias.',
-    'Me gusta que seas tú la última persona con la que hablo.',
-    'Tengo mil razones y todas empiezan contigo.',
-    'No sé cómo lo haces, pero siempre vuelvo a ti.',
-    'Contigo aprendí que el amor también es tranquilo.',
-    'Ojalá la vida me dé muchos 21 de septiembre contigo.',
-    'Te amo en los días bonitos y en los otros también.',
-    'Y esta última flor es la más sincera: quédate conmigo.',
+    'Te amo con todo mi cucharón',
+    'Me encantan tus ojitos precisos',
+    'No dejo de pensar en ti, mi princesa',
+    'Eres la mejor, te adoro demasiado',
+    'Juntos podremos lograr todas nuestras metas',
+    'Eres hermosisisisisisima, nunca lo dudes',
+    'Contigo hice cosas que antes no me habría creído capaz',
+    'Amo tus gestos, risa, sonrisa, voz, mirada, cabello, cariños, afectos, todo',
+    'Eres mi compañera de juegos y de la vida',
+    'La vida tiene mucho más color cuando estoy junto a ti, preciosa',
+    'Contigo sí me animo a formar una familia',
+    'Contigo deseo todo y todo lo tendremos',
+    'Hacer planes a futuro y escucharte tan entusiasmada me hace muy feliz',
+    'Adoro cada momento que vivimos juntos',
+    'He mejorado como persona gracias a ti, mi amor',
+    'Eres mi niña, fue tu primer apodo y nunca dejarás de serlo',
+    'Amo que nos acompañemos así no tengamos que decir nada',
+    'Amo que los silencios no sean incómodos para nosotros',
+    'Cada que pienso en ti se me dibuja una sonrisa y me siento feliz',
+    'Adoro lo nuestro y que se vaya construyendo más y más',
+    'Eres mi felicidad, mi corazón, mi mundo entero, vida mía',
   ],
 
   /* ────────────────────────────────────────────────────────────
@@ -97,7 +95,7 @@ Gracias por estar. Gracias por quedarte.`,
 
   /* ────────────────────────────────────────────────────────────
      6. MÚSICA
-     Deja tu canción en  public/music/cancion.mp3
+     La canción va en  public/music/cancion.mp3
      Si no hay archivo, el botón de música se desactiva solo.
      ──────────────────────────────────────────────────────────── */
 

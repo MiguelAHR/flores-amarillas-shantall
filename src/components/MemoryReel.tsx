@@ -89,13 +89,15 @@ export default function MemoryReel({ escenas, onContinuar, onCambioPlano }: Prop
         </div>
       </div>
 
-      {esUltimo && (
-        <div className="reel__pie">
+      {/* El hueco está siempre reservado para que el layout no salte;
+          el botón solo aparece en el último plano. */}
+      <div className="reel__pie">
+        {esUltimo && (
           <button className="boton boton--oro" onClick={onContinuar}>
             Ir al jardín
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       <div className="reel__barra" aria-hidden="true">
         <i style={{ width: `${progreso}%` }} />
